@@ -57,6 +57,135 @@
 
     </header>
 
+    <!-- Formulario de pedido -->
+
+<div class="order-modal" id="order-modal">
+
+    <div class="order-form">
+
+        <button class="close-button" id="close-order">
+            ×
+        </button>
+
+        <p class="section-label">
+            HACÉ TU PEDIDO
+        </p>
+
+        <h2>
+            Tu próximo
+            <span>favorito</span>
+        </h2>
+
+        <p class="order-description">
+            Completá tus datos y elegí el brookie que querés probar.
+        </p>
+
+        <form id="order-form">
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="nombre">
+                        Nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Tu nombre"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="apellido">
+                        Apellido
+                    </label>
+
+                    <input
+                        type="text"
+                        id="apellido"
+                        placeholder="Tu apellido"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="telefono">
+                    Teléfono
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefono"
+                    placeholder="Tu teléfono"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="direccion">
+                    Dirección
+                </label>
+
+                <input
+                    type="text"
+                    id="direccion"
+                    placeholder="Calle y número"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="sabor">
+                    Sabor de brookie
+                </label>
+
+                <select id="sabor" required>
+
+                    <option value="">
+                        Elegí un sabor
+                    </option>
+
+                    <option value="Oreo">
+                        Brookie Oreo
+                    </option>
+
+                    <option value="Chocolate">
+                        Brookie Chocolate
+                    </option>
+
+                    <option value="Red Velvet">
+                        Brookie Red Velvet
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button
+                type="submit"
+                class="button button-primary submit-button"
+            >
+                Confirmar pedido
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
 
 
     <!-- Inicio -->
@@ -202,7 +331,7 @@
                 <article class="product-card">
         
                     <div class="product-image">
-                        <img src="img/brookie-oreo.jpg" alt="Brookie Oreo">
+                        <img src="img/brookie-oreo.jpg" width="300">
                         <span class="product-tag">PRÓXIMAMENTE</span>
                     </div>
         
@@ -382,8 +511,7 @@
                 </p>
 
                 <h2>
-                    Tu próximo
-                    <span>favorito</span>
+                    Tu próximo favorito
                     está acá.
                 </h2>
 
@@ -392,9 +520,9 @@
                     de una historia hecha para disfrutar.
                 </p>
 
-                <a href="#" class="button button-light">
+                <button class="button button-light" id="order-button">
                     Hacer mi pedido
-                </a>
+                </button>
 
             </div>
 
@@ -409,49 +537,34 @@
     <footer class="footer">
 
         <div class="footer-logo">
-
+    
             <img
                 src="img/logo.png"
                 alt="Brooklyn"
             >
-
+    
         </div>
-
-
+    
         <div class="footer-links">
-
+    
             <a href="#inicio">Inicio</a>
-
+    
             <a href="#historia">Historia</a>
-
+    
             <a href="#productos">Productos</a>
-
+    
             <a href="#contacto">Contacto</a>
-
+    
         </div>
-
-
-        <div class="footer-social">
-
-            <a href="#">
-                Instagram
-            </a>
-
-            <a href="#">
-                WhatsApp
-            </a>
-
-        </div>
-
-
+    
         <div class="footer-bottom">
-
+    
             <p>
                 © 2026 Brooklyn. Todos los derechos reservados.
             </p>
-
+    
         </div>
-
+    
     </footer>
 
 

@@ -1,31 +1,25 @@
-/*¨Navbar */
-const navbar = document.getElementById("navbar");
+/* NAVBAR */
 
+const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
 
     if (window.scrollY > 50) {
-
         navbar.classList.add("scrolled");
-
     } else {
-
         navbar.classList.remove("scrolled");
-
     }
 
 });
 
 
-
-/* Menu */
+/* MENU */
 
 const menuButton =
     document.getElementById("menu-button");
 
 const navMenu =
     document.querySelector(".nav-menu");
-
 
 menuButton.addEventListener("click", () => {
 
@@ -34,7 +28,7 @@ menuButton.addEventListener("click", () => {
 });
 
 
-/* Cerrar menú al tocar un link */
+/* CERRAR MENU */
 
 document.querySelectorAll(".nav-menu a").forEach(link => {
 
@@ -47,12 +41,10 @@ document.querySelectorAll(".nav-menu a").forEach(link => {
 });
 
 
-
-/* Botones del producto */
+/* BOTONES */
 
 const buyButtons =
     document.querySelectorAll(".buy-button");
-
 
 buyButtons.forEach(button => {
 
@@ -65,7 +57,6 @@ buyButtons.forEach(button => {
         setTimeout(() => {
 
             button.textContent = "+";
-
             button.style.background = "";
 
         }, 1500);
@@ -74,44 +65,62 @@ buyButtons.forEach(button => {
 
 });
 
+/* Formulario de pedido */
+
+const orderButton =
+    document.getElementById("order-button");
+
+const orderModal =
+    document.getElementById("order-modal");
+
+const closeOrder =
+    document.getElementById("close-order");
+
+const orderForm =
+    document.getElementById("order-form");
 
 
-/* Animación del scrolleo */
+/* Abrir formulario */
 
-const elements =
-    document.querySelectorAll(
-        ".product-card, .process-item, .history-content"
-    );
+orderButton.addEventListener("click", () => {
+
+    orderModal.classList.add("active");
+
+});
 
 
-const observer = new IntersectionObserver(
+/* Cerrar formulario */
 
-    entries => {
+closeOrder.addEventListener("click", () => {
 
-        entries.forEach(entry => {
+    orderModal.classList.remove("active");
 
-            if (entry.isIntersecting) {
+});
 
-                entry.target.style.animation =
-                    "fadeUp 0.8s ease forwards";
 
-            }
+/* Cerrar al hacer click fuera del formulario */
 
-        });
+orderModal.addEventListener("click", (event) => {
 
-    },
+    if (event.target === orderModal) {
 
-    {
-        threshold: 0.15
+        orderModal.classList.remove("active");
+
     }
 
-);
+});
 
 
-elements.forEach(element => {
+/* Enviar pedido */
 
-    element.style.opacity = "0";
+orderForm.addEventListener("submit", (event) => {
 
-    observer.observe(element);
+    event.preventDefault();
+
+    alert("¡Gracias por tu pedido! Brooklyn se pondrá en contacto con vos.");
+
+    orderForm.reset();
+
+    orderModal.classList.remove("active");
 
 });
