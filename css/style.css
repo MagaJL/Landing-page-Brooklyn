@@ -174,66 +174,119 @@ img {
 /* Productos */
 
 .products {
-    background: var(--cream);
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    width: 100%;
-}
-
-.product-card {
-    display: block;
-    background: #FFFDF8;
-    border-radius: 20px;
+    background: #E1C186;
     overflow: hidden;
 }
 
+.carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.products-slider {
+    display: flex;
+    gap: 30px;
+    overflow: hidden;
+    padding: 40px 80px;
+    justify-content: center;
+}
+
+.product-card {
+    flex: 0 0 320px;
+    background: #FFFDF8;
+    border-radius: 25px;
+    overflow: hidden;
+    opacity: .55;
+    transform: scale(.85);
+    transition: .5s ease;
+}
+
+.product-card.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 .product-image {
-    display: block;
     width: 100%;
-    height: 300px;
+    height: 330px;
     position: relative;
 }
 
 .product-image img {
-    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+.product-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #BD7028;
+    color: white;
+    padding: 8px 13px;
+    border-radius: 20px;
+    font-size: 10px;
+}
+
 .product-info {
-    display: block;
     padding: 20px;
+    text-align: center;
 }
 
 .product-info h3 {
     font-family: "Aref Ruqaa", serif;
-    font-size: 27px;
+    font-size: 28px;
 }
 
 .product-info p {
-    margin: 10px 0 20px;
+    margin-top: 8px;
     line-height: 1.5;
 }
 
-.product-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #713501;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
 }
 
-.buy-button {
-    width: 40px;
-    height: 40px;
-    border: 0;
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.carousel-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 5px;
     border-radius: 50%;
-    background: var(--dark);
-    color: white;
-    font-size: 20px;
+    background: #713501;
+    opacity: .3;
+}
+
+.dot.active {
+    opacity: 1;
+    width: 22px;
+    border-radius: 10px;
 }
 
 
