@@ -18,7 +18,7 @@ html {
 
 body {
     font-family: "Artifika", serif;
-    color: var(--brown);
+    color: var(--dark);
     background: var(--white);
 }
 
@@ -43,12 +43,12 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--white);
+    background: var(--cream);
     z-index: 10;
 }
 
 .logo {
-    width: 120px;
+    width: 200px;
 }
 
 .nav-menu {
@@ -57,7 +57,7 @@ img {
 }
 
 .nav-menu a:hover {
-    color: var(--orange);
+    color: var(--dark);
 }
 
 .menu-button {
@@ -73,7 +73,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--cream);
+    background: var(--orange);
 }
 
 .hero-content {
@@ -82,9 +82,9 @@ img {
 
 .hero-small,
 .section-label {
-    color: var(--orange);
+    color: var(--dark);
     letter-spacing: 3px;
-    font-size: 12px;
+    font-size: 24px;
 }
 
 .hero h1 {
@@ -97,7 +97,7 @@ img {
 .hero h1 span,
 .history-content h2 span,
 .cta h2 span {
-    color: var(--orange);
+    color: var(--cream);
 }
 
 .hero-description {
@@ -119,7 +119,7 @@ img {
 }
 
 .button-secondary {
-    border: 1px solid var(--brown);
+    border: 3px solid var(--brown);
 }
 
 .hero-image img {
