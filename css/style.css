@@ -565,3 +565,41 @@ img {
     }
 
 }
+/* Lluvia de chips de chocolate */
+
+.chocolate-rain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.chocolate-chip {
+    position: absolute;
+    top: -50px;
+
+    width: 35px;
+    height: 35px;
+
+    background-image: url("../img/chocolate-chip.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    animation: chocolateFall linear forwards;
+}
+
+@keyframes chocolateFall {
+
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+
+}

@@ -179,3 +179,70 @@ prev.addEventListener("click", () => {
     updateCarousel();
 
 });
+
+/* Lluvia de chips de chocolate */
+
+// Contenedor donde se van a crear los chips
+const chocolateRain =
+    document.querySelector(".chocolate-rain");
+
+// Crea un chip de chocolate
+function createChocolate() {
+
+    const chocolate =
+        document.createElement("span");
+
+    chocolate.classList.add("chocolate-chip");
+
+    // Posición horizontal aleatoria
+    chocolate.style.left =
+        Math.random() * 100 + "%";
+
+    // Tamaño aleatorio
+    const size =
+        7 + Math.random() * 10;
+
+    chocolate.style.width =
+        size + "px";
+
+    chocolate.style.height =
+        size * 0.7 + "px";
+
+    // Velocidad aleatoria
+    chocolate.style.animationDuration =
+        2 + Math.random() * 3 + "s";
+
+    chocolateRain.appendChild(chocolate);
+
+    // Elimina el chip después de caer para no acumular elementos en la página
+    setTimeout(() => {
+
+        chocolate.remove();
+
+    }, 5000);
+}
+
+
+/* Crea chocolate cuando el usuario hace scroll */
+
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+
+    const currentScroll = window.scrollY;
+
+    // Solo crea chips cuando realmente hubo movimiento de scroll
+    if (currentScroll !== lastScroll) {
+
+        createChocolate();
+
+        // Si el usuario scrollea rápido, aparecen algunos chips adicionales
+        if (Math.abs(currentScroll - lastScroll) > 20) {
+            createChocolate();
+        }
+
+    }
+
+    lastScroll = currentScroll;
+
+});
