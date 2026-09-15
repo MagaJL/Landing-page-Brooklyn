@@ -198,16 +198,28 @@ function createChocolate() {
     chocolate.style.left =
         Math.random() * 100 + "%";
 
-    // Tamaño aleatorio
-    const size =
-        7 + Math.random() * 10;
+    // Elegimos un tamaño aleatorio
+    const size = 8 + Math.random() * 12;
+    
+    chip.style.width = size + "px";
+    chip.style.height = size * 0.7 + "px";
+    
+    // Cada chip tiene una forma ligeramente diferente
+    const rotation = Math.random() * 360;
+    
+    chip.style.transform =
+    `rotate(${rotation}deg)`;
 
-    chocolate.style.width =
-        size + "px";
-
-    chocolate.style.height =
-        size * 0.7 + "px";
-
+    const chocolateColors = [
+        "#4B291D",
+        "#5A3020",
+        "#713501"
+    ];
+    
+    chip.style.background =
+        chocolateColors[
+            Math.floor(Math.random() * chocolateColors.length)
+        ];
     // Velocidad aleatoria
     chocolate.style.animationDuration =
         2 + Math.random() * 3 + "s";
