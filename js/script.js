@@ -122,7 +122,8 @@ orderModal.addEventListener("click", (event) => {
 
 orderForm.addEventListener("submit", (event) => {
 
-    event.preventDefault();
+    event.preventDefault(); /*para que no se recargue o cambie la página
+                            cuando el usuario envía el formulario*/
 
     alert("¡Gracias por tu pedido! Brooklyn se pondrá en contacto con vos.");
 
@@ -137,7 +138,8 @@ const cards = document.querySelectorAll(".product-card");
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 
-let current = 0;
+let current = 0; /*para saber cúal de las tarjetas está seleccionada (como los arrays empiexan en cero,
+                 0 representa la primera tarjeta)*/
 
 
 function updateCarousel() {
@@ -158,7 +160,8 @@ next.addEventListener("click", () => {
     current++;
 
     if (current >= cards.length) {
-        current = 0;
+        current = 0; /*para que cuando llega al último producto, vuelve al primero
+                     en vez de intentar acceder a una tarjeta que no existe*/
     }
 
     updateCarousel();
@@ -189,44 +192,35 @@ const chocolateRain =
 // Crea un chip de chocolate
 function createChocolate() {
 
+    // Creamos un círculo
     const chocolate =
         document.createElement("span");
 
+    // Le damos la clase que tiene el diseño del chip
     chocolate.classList.add("chocolate-chip");
 
     // Posición horizontal aleatoria
     chocolate.style.left =
         Math.random() * 100 + "%";
 
-    // Elegimos un tamaño aleatorio
-    const size = 8 + Math.random() * 12;
-    
-    chip.style.width = size + "px";
-    chip.style.height = size * 0.7 + "px";
-    
-    // Cada chip tiene una forma ligeramente diferente
-    const rotation = Math.random() * 360;
-    
-    chip.style.transform =
-    `rotate(${rotation}deg)`;
+    // Tamaño aleatorio
+    const size =
+        8 + Math.random() * 12;
 
-    const chocolateColors = [
-        "#4B291D",
-        "#5A3020",
-        "#713501"
-    ];
-    
-    chip.style.background =
-        chocolateColors[
-            Math.floor(Math.random() * chocolateColors.length)
-        ];
+    chocolate.style.width =
+        size + "px";
+
+    chocolate.style.height =
+        size + "px";
+
     // Velocidad aleatoria
     chocolate.style.animationDuration =
         2 + Math.random() * 3 + "s";
 
+    // Agregamos el chip a la pantalla
     chocolateRain.appendChild(chocolate);
 
-    // Elimina el chip después de caer para no acumular elementos en la página
+    // Lo eliminamos después de caer
     setTimeout(() => {
 
         chocolate.remove();
@@ -241,20 +235,64 @@ let lastScroll = 0;
 
 window.addEventListener("scroll", () => {
 
-    const currentScroll = window.scrollY;
+    const currentScroll =
+        window.scrollY;
 
-    // Solo crea chips cuando realmente hubo movimiento de scroll
+    // Detectamos si el usuario se movió
     if (currentScroll !== lastScroll) {
 
+        // Creamos un chip
         createChocolate();
 
-        // Si el usuario scrollea rápido, aparecen algunos chips adicionales
-        if (Math.abs(currentScroll - lastScroll) > 20) {
+        // Si scrollea rápido, creamos otro
+        if (
+            Math.abs(currentScroll - lastScroll) > 20
+        ) {
             createChocolate();
         }
-
     }
 
     lastScroll = currentScroll;
+});
+
+/* Animación cuando cambia el fondo de una sección */
+
+// Seleccionamos las secciones que queremos animar
+const scrollSections =
+    document.querySelectorAll(".scroll-section");
+
+// Detectamos cuando una sección entra o sale de la pantalla
+const sectionObserver =
+    new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                // La sección aparece
+                entry.target.classList.add("show");
+
+            } else {
+
+                // Cuando salimos de la sección, sacamos "show" para que pueda 
+                // volver a aparecer al subir/bajar
+                entry.target.classList.remove("show");
+
+            }
+
+        });
+
+    }, {
+
+        // Empieza cuando aparece el 20% de la sección visible
+        threshold: 0.20
+
+    });
+
+
+// Activamos el detector para cada sección
+scrollSections.forEach(section => {
+
+    sectionObserver.observe(section);
 
 });

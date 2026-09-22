@@ -36,11 +36,11 @@ img {
 /* Navbar */
 
 .navbar {
-    position: fixed;
+    position: fixed; /*para que la navbar siga viéndose cuando el usuario pasa a otra sección*/
     width: 100%;
     height: 80px;
     padding: 0 7%;
-    display: flex;
+    display: flex; /*para distribuir los elementos horizontalmente y poder alinearlos fácilmente*/
     justify-content: space-between;
     align-items: center;
     background: var(--cream);
@@ -152,8 +152,9 @@ img {
 /* Historia */
 
 .history {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid; /*para dividir la sección en dos columnas: una para la imagen y otra para el texto*/
+    grid-template-columns: 1fr 1fr; /*para que las dos columnas ocupen la misma proporción
+                                    del espacio disponible (50% imagen y 50% texto)*/
     gap: 80px;
     align-items: center;
 }
@@ -174,7 +175,7 @@ img {
 /* Productos */
 
 .products {
-    background: #E1C186;
+    background: #BD7028;
     overflow: hidden;
 }
 
@@ -426,12 +427,12 @@ img {
 
 /* Formulario de pedido */
 
-.order-modal {
+.order-modal { /*para que el usuario pudiera hacer el pedido sin abandonar la landing page*/
     position: fixed;
     inset: 0;
     background: rgba(75, 41, 29, 0.75);
 
-    display: none;
+    display: none; /*para que inicialmente el formulario esté oculto*/
     align-items: center;
     justify-content: center;
 
@@ -577,29 +578,44 @@ img {
 
 .chocolate-chip {
     position: absolute;
-    top: -50px;
+    top: -20px;
 
-    width: 100px;
-    height: 100px;
+    /* Forma del chip */
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
 
-    background-image: url("../img/chocolate-chip.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    /* Color del chocolate */
+    background: #4B291D;
 
+    /* Hace que caiga */
     animation: chocolateFall linear forwards;
 }
 
 @keyframes chocolateFall {
 
+    /* Empieza arriba */
     0% {
-        transform: translateY(-50px) rotate(0deg);
+        transform: translateY(-20px) rotate(0deg);
         opacity: 1;
     }
 
+    /* Termina abajo */
     100% {
         transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
+        opacity: 0; /*para que los chips sean invisibles*/
     }
+}
 
+/* Animación de las secciones cuando cambia el fondo */
+
+.scroll-section {
+    opacity: 0;
+    transform: translateY(60px); /*para que parezca que la siguiente sección entra desde abajo*/
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
